@@ -1,0 +1,29 @@
+jsCanvasPaint - jquery plugin that turns any canvas element into a simple painting, sketching area.
+
+Usage:
+
+$('#myCanvas').jsCanvasPaint();
+
+Features:
+
+Responds to both mouse events on desktop as well as touch events on mobile devices.
+
+Brush plug-in architecture. 
+ (brush is an object that must implement stroke start, move, end events, and optionally size change, color change, opacity change)
+
+Provides a png or jpeg export function that converts canvas image data into base64 encoded string to be submitted with a form.
+
+
+Flexibly create your own UI for selecting brushes, colors, size etc and just hook into jsCanvasPaint methods for calling brush methods.
+
+$.jsCanvasPaint.setCurrentBrush(marker);
+$.jsCanvasPaint.currentBrush.setColor('#FFFFFF'); //if marker defines a setColor method
+
+Callbacks for tying in extra functionality:
+
+$.jsCanvasPaint.strokeCount == 1
+
+//good for creating a window unload listener so that you can warn that data will be lost if form is not saved, but only if
+//drawing has started.
+
+$.jsCanvasPaint.afterStroke(function() { ... do something after every brush stroke, like save Stroke Data for playback ...});
